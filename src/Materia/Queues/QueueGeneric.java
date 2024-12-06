@@ -1,26 +1,23 @@
 package Materia.Queues;
 
 import java.util.NoSuchElementException;
-
-import Materia.Models.Node;
 import Materia.Models.NodeGeneric;
 
-public class QueueGeneric <T> {
-    
-    
-    private NodeGeneric<T>   front;
-    private NodeGeneric<T>  rear;
+public class QueueGeneric<T> {
 
-    public Queue <T> () {
+    private NodeGeneric<T> front;
+    private NodeGeneric<T> rear;
+
+    public QueueGeneric() {
         this.front = null;
         this.rear = null;
     }
 
-    // Método para agregar elementos a la cola
-    public <T>  enqueue(int value) {
-        Node newNode = new Node(value); // Corregir el error tipográfico
+    
+    public void enqueue(T value) {
+        NodeGeneric<T> newNode = new NodeGeneric<>(value); 
         if (isEmpty()) {
-            front =  newNode ;
+            front = newNode;
             rear = newNode;
         } else {
             rear.setNext(newNode);
@@ -28,33 +25,28 @@ public class QueueGeneric <T> {
         }
     }
 
-    // Método para eliminar el primer elemento de la cola
-    public Node dequeue() {
+
+    public NodeGeneric<T> dequeue() {
         if (isEmpty()) {
             throw new NoSuchElementException("La cola está vacía");
         }
-        Node node = front;
+        NodeGeneric<T> node = front;
         front = front.getNext();
         if (front == null) {
             rear = null;
         }
-        return node; // Se debe devolver el nodo eliminado, no el siguiente nodo
+        return node; 
     }
 
-    // Método para obtener el primer elemento de la cola sin eliminarlo
-    public Node peek() {
+    public NodeGeneric<T> peek() {
         if (isEmpty()) {
             throw new NoSuchElementException("La cola está vacía");
         }
         return front;
     }
 
-    // Método para verificar si la cola está vacía
+
     public boolean isEmpty() {
         return front == null;
     }
-}
-
-
-
 }
