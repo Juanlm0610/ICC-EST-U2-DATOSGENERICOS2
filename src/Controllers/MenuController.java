@@ -45,37 +45,17 @@ public class MenuController {
 
     private void printList() {
         // Mostrar todos los contactos
-        ConsoleView.showMessage("Printing list of contacts:");
-        List<Contact<String, String>> contacts = contactManager.getContacts();
-        if (contacts.isEmpty()) {
-            ConsoleView.showMessage("No contacts available.");
-        } else {
-            for (Contact<String, String> contact : contacts) {
-                ConsoleView.showMessage("Name: " + contact.getName() + ", Phone: " + contact.getPhone());
-            }
-        }
+       contactManager.printList();
     }
 
     private void findContact() {
         // Buscar un contacto por nombre
-        String name = ConsoleView.getInput("Enter the name of the contact to find: ");
-        Contact<String, String> contact = contactManager.findContact(name);
-        if (contact != null) {
-            ConsoleView.showMessage("Contact found: Name: " + contact.getName() + ", Phone: " + contact.getPhone());
-        } else {
-            ConsoleView.showMessage("Contact not found.");
-        }
+  
     }
 
     private void deleteContact() {
         // Eliminar un contacto por nombre
-        String name = ConsoleView.getInput("Enter the name of the contact to delete: ");
-        boolean success = contactManager.deleteContact(name);
-        if (success) {
-            ConsoleView.showMessage("Contact deleted.");
-        } else {
-            ConsoleView.showMessage("Contact not found.");
-        }
+ 
     }
 
     private void addContact() {

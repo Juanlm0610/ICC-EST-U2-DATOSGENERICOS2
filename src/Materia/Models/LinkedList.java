@@ -12,7 +12,7 @@ public void print(){
     }
 
     NodeGeneric<T> current = head;
-    while (current.getNext() !=null ) {
+    while (current.getNext() != null ) {
         System.out.println(current.getValue() + "->");
     }
     System.out.println("End");
