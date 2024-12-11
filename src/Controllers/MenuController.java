@@ -33,7 +33,7 @@ public class MenuController {
                     printList();
                     break;
                 case "5":
-                    exit = false;  // Cambié exit a false para salir correctamente
+                    exit = false; // Cambié exit a false para salir correctamente
                     ConsoleView.showMessage("Exiting................");
                     break;
                 default:
@@ -45,17 +45,22 @@ public class MenuController {
 
     private void printList() {
         // Mostrar todos los contactos
-       contactManager.printList();
+        contactManager.printList();
     }
 
     private void findContact() {
-        // Buscar un contacto por nombre
-  
+        String name = ConsoleView.getInput("Entrer a name to Search");
+        Contact<?, ?> contact = contactManager.findContact(name);
+        if (contact != null) {
+            ConsoleView.showMessage("Contact Found: " + contact);
+        }
+
     }
 
     private void deleteContact() {
-        // Eliminar un contacto por nombre
- 
+        String name = ConsoleView.getInput("Entrer a name to Search");
+        contactManager.deleteContact(name);
+        ConsoleView.showMessage("Contact deleted if exist");
     }
 
     private void addContact() {

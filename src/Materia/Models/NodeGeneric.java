@@ -22,7 +22,7 @@ public class NodeGeneric <T> {
         this.value = value;
     }
 
-    public NodeGeneric getNext() {
+    public  NodeGeneric<T> getNext() {
         return next;
     }
 
